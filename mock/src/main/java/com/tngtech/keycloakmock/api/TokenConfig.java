@@ -222,7 +222,22 @@ public class TokenConfig {
     @Nullable private String authenticationContextClassReference;
 
     private Builder() {
-      scope.add("openid");
+    	scope.add("openid");
+    	scope.add("urn:org.eclipse.basyx:scope:aas-registry:read");
+    	scope.add("urn:org.eclipse.basyx:scope:aas-registry:write");
+    	scope.add("urn:org.eclipse.basyx:scope:aas-aggregator:read");
+    	scope.add("urn:org.eclipse.basyx:scope:aas-aggregator:write");
+    	scope.add("urn:org.eclipse.basyx:scope:aas-api:read");
+    	scope.add("urn:org.eclipse.basyx:scope:aas-api:write");
+    	scope.add("urn:org.eclipse.basyx:scope:sm-aggregator:read");
+    	scope.add("urn:org.eclipse.basyx:scope:sm-aggregator:write");
+    	scope.add("urn:org.eclipse.basyx:scope:sm-api:read");
+    	scope.add("urn:org.eclipse.basyx:scope:sm-api:write");
+		scope.add("aas-aggregator");
+		scope.add("sm-aggregator");
+		scope.add("aas-registry");
+		scope.add("sm-api");
+		scope.add("aas-api");
     }
 
     /**

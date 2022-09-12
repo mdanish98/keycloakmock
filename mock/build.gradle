@@ -50,3 +50,16 @@ test {
         logger.lifecycle("Running test: ${descriptor}")
     }
 }
+
+task uberJar(type: Jar) {
+    archiveClassifier = 'uber'
+    
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    from sourceSets.main.output
+
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { it.name.endsWith('jar') }.collect { zipTree(it) }
+    }
+}
