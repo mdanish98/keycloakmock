@@ -213,3 +213,4 @@ sonarqube {
         property "sonar.cpd.exclusions", "mock-junit/**"
     }
 }
+
