@@ -160,14 +160,9 @@ public final class ServerConfig {
       return this;
     }
     
-    public void withTokenScope(Set<String> scope) {
-//        com.tngtech.keycloakmock.api.TokenConfig.Builder builder = new com.tngtech.keycloakmock.api.TokenConfig.Builder(scope);
-    	System.out.println("SCOPE from Server : " + scope.toString());
-    	if(scope == null) {
-    		System.out.println("Scope is null");
-    	}
-        TokenConfig.setTestScope(scope);
-//        return this;
+    public Builder withClientScopes(Set<String> scope) {
+        TokenConfig.addClientScopes(scope);
+        return this;
       }
 
     /**

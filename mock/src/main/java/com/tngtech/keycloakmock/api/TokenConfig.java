@@ -52,7 +52,7 @@ public class TokenConfig {
   @Nullable private final String email;
   @Nullable private final String preferredUsername;
   @Nullable private final String authenticationContextClassReference;
-  private static Set<String> scopeTest = new HashSet<>();
+  @Nullable private static Set<String> clientScope = new HashSet<>();
 
   private TokenConfig(@Nonnull final Builder builder) {
     if (builder.audience.isEmpty()) {
@@ -97,17 +97,12 @@ public class TokenConfig {
    */
   @Nonnull
   public static Builder aTokenConfig() {
-	  System.out.println("Here in Builder");
-	  Set<String> scopeSet = new HashSet<>();
-	  scopeSet.add("Test2");
-	  
-    return new Builder(scopeTest);
+    return new Builder();
   }
   
-  public static void setTestScope(Set<String> scopeTestP) {
-	  System.out.println("SCOPE : " + scopeTestP.toString());
-	  scopeTestP.stream().forEach(val -> scopeTest.add(val));
-//	  scopeTest.addAll(scopeTestP);
+  @Nonnull
+  public static void addClientScopes(Set<String> scopeTestP) {
+	  Builder.clientScope.addAll(scopeTestP);
   }
 
   @Nonnull
@@ -231,28 +226,13 @@ public class TokenConfig {
     @Nullable private String email;
     @Nullable private String preferredUsername;
     @Nullable private String authenticationContextClassReference;
+    @Nonnull protected static final Set<String> clientScope = new HashSet<>();
 
     Builder() {
     	scope.add("openid");
-//    	scope.add("urn:org.eclipse.basyx:scope:aas-registry:read");
-//    	scope.add("urn:org.eclipse.basyx:scope:aas-registry:write");
-//    	scope.add("urn:org.eclipse.basyx:scope:aas-aggregator:read");
-//    	scope.add("urn:org.eclipse.basyx:scope:aas-aggregator:write");
-//    	scope.add("urn:org.eclipse.basyx:scope:aas-api:read");
-//    	scope.add("urn:org.eclipse.basyx:scope:aas-api:write");
-//    	scope.add("urn:org.eclipse.basyx:scope:sm-aggregator:read");
-//    	scope.add("urn:org.eclipse.basyx:scope:sm-aggregator:write");
-//    	scope.add("urn:org.eclipse.basyx:scope:sm-api:read");
-//    	scope.add("urn:org.eclipse.basyx:scope:sm-api:write");
-//		scope.add("aas-aggregator");
-//		scope.add("sm-aggregator");
-//		scope.add("aas-registry");
-//		scope.add("sm-api");
-//		scope.add("aas-api");
-    }
-    
-    Builder(Set<String> scopes) {
-    	scope.addAll(scopes);
+    	if(!clientScope.isEmpty()) {
+    		scope.addAll(clientScope);
+    	}
     }
 
     /**
