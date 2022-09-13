@@ -3,9 +3,13 @@ package com.tngtech.keycloakmock.api;
 import com.tngtech.keycloakmock.impl.Protocol;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+
 import javax.annotation.Nonnull;
+import static com.tngtech.keycloakmock.api.TokenConfig.Builder;
 
 /** Server configuration to use. */
 public final class ServerConfig {
@@ -155,6 +159,16 @@ public final class ServerConfig {
       this.port = port;
       return this;
     }
+    
+    public void withTokenScope(Set<String> scope) {
+//        com.tngtech.keycloakmock.api.TokenConfig.Builder builder = new com.tngtech.keycloakmock.api.TokenConfig.Builder(scope);
+    	System.out.println("SCOPE from Server : " + scope.toString());
+    	if(scope == null) {
+    		System.out.println("Scope is null");
+    	}
+        TokenConfig.setTestScope(scope);
+//        return this;
+      }
 
     /**
      * Set default hostname.
