@@ -1,7 +1,7 @@
 package com.tngtech.keycloakmock.examplebackend;
 
-import static com.tngtech.keycloakmock.api.ServerConfig.aServerConfig;
-import static com.tngtech.keycloakmock.api.TokenConfig.aTokenConfig;
+import static io.github.mdanish98.keycloakmock.api.ServerConfig.aServerConfig;
+import static io.github.mdanish98.keycloakmock.api.TokenConfig.aTokenConfig;
 import static org.hamcrest.Matchers.equalTo;
 
 import com.tngtech.keycloakmock.junit.KeycloakMockRule;

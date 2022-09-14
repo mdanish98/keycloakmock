@@ -39,7 +39,7 @@ allprojects {
         google()
     }
 
-    group = 'com.tngtech.keycloakmock'
+    group = 'io.github.mdanish98.keycloakmock'
     version = scmVersion.version
 }
 
@@ -55,7 +55,7 @@ ext {
     slf4j_version = '1.7.36'
     vertx_version = '4.3.0'
 
-    license_name = 'The Apache License, Version 2.0'
+    license_name = 'Based on the Apache License, Version 2.0'
     license_url = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
 
     company_name = 'TNG Technology Consulting GmbH'
@@ -118,13 +118,13 @@ subprojects {
             }
             repositories.maven {
                 if (project.version.endsWith('-SNAPSHOT')) {
-                    credentials.username project.findProperty('sonatypeUsername')
-                    credentials.password project.findProperty('sonatypePassword')
-                    url 'https://oss.sonatype.org/content/repositories/snapshots/'
+                    credentials.username project.findProperty('ossrhUsername')
+                    credentials.password project.findProperty('ossrhPassword')
+                    url 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
                 } else {
-                    credentials.username project.findProperty('sonatypeUsername')
-                    credentials.password project.findProperty('sonatypePassword')
-                    url 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+                    credentials.username project.findProperty('ossrhUsername')
+                    credentials.password project.findProperty('ossrhPassword')
+                    url 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
                 }
             }
         }
@@ -139,7 +139,7 @@ subprojects {
         }
 
         tasks.withType(Sign) {
-            onlyIf { project.hasProperty('sonatypeUsername') }
+            onlyIf { project.hasProperty('ossrhUsername') }
         }
 
         test {
@@ -169,7 +169,7 @@ subprojects {
                     }
                 }
                 name = "${project.group}:${project.name}"
-                url = 'https://github.com/TNG/keycloak-mock'
+                url = 'https://github.com/mdanish98/keycloakmock'
                 description = "${project.description}"
 
                 organization {
@@ -178,9 +178,9 @@ subprojects {
                 }
 
                 scm {
-                    url = 'https://github.com/TNG/keycloak-mock'
-                    connection = 'scm:git:git://github.com/TNG/keycloak-mock'
-                    developerConnection = 'scm:git:ssh://github.com/TNG/keycloak-mock'
+                    url = 'https://github.com/mdanish98/keycloakmock'
+                    connection = 'scm:git:git:github.com/mdanish98/keycloakmock.git'
+                    developerConnection = 'scm:git:ssh://github.com/mdanish98/keycloakmock.git'
                 }
 
                 developers {
@@ -198,6 +198,11 @@ subprojects {
                         id = 'christian-ertl'
                         name = 'Christian Ertl'
                         email = 'christian.ertl@tngtech.com'
+                    }
+                    developer {
+                        id = 'mdanish98'
+                        name = 'Mohammad Ghazanfar Ali Danish'
+                        email = 'mdanish98@gmail.com'
                     }
                 }
             }

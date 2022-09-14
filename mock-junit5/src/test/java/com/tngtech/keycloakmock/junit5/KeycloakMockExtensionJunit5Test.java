@@ -1,9 +1,10 @@
 package com.tngtech.keycloakmock.junit5;
 
-import static com.tngtech.keycloakmock.api.ServerConfig.aServerConfig;
-
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+
+import static io.github.mdanish98.keycloakmock.api.ServerConfig.aServerConfig;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

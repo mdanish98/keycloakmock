@@ -1,0 +1,74 @@
+package io.github.mdanish98.keycloakmock.impl.handler;
+
+import io.github.mdanish98.keycloakmock.impl.UrlConfiguration;
+import io.github.mdanish98.keycloakmock.impl.helper.RedirectHelper;
+import io.github.mdanish98.keycloakmock.impl.helper.UserInputSanitizer;
+import io.github.mdanish98.keycloakmock.impl.session.PersistentSession;
+import io.github.mdanish98.keycloakmock.impl.session.SessionRepository;
+import io.github.mdanish98.keycloakmock.impl.session.SessionRequest;
+import io.vertx.core.Handler;
+import io.vertx.ext.web.RoutingContext;
+
+import static io.github.mdanish98.keycloakmock.impl.handler.RequestUrlConfigurationHandler.CTX_REQUEST_CONFIGURATION;
+
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
+import javax.annotation.Nonnull;
+import javax.inject.Inject;
+import javax.inject.Singleton;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+@Singleton
+public class AuthenticationRoute implements Handler<RoutingContext> {
+
+  private static final Logger LOG = LoggerFactory.getLogger(AuthenticationRoute.class);
+  private static final String USERNAME_PARAMETER = "username";
+  private static final String ROLES_PARAMETER = "password";
+
+  @Nonnull private final SessionRepository sessionRepository;
+  @Nonnull private final RedirectHelper redirectHelper;
+
+  @Inject
+  AuthenticationRoute(
+      @Nonnull SessionRepository sessionRepository, @Nonnull RedirectHelper redirectHelper) {
+    this.sessionRepository = sessionRepository;
+    this.redirectHelper = redirectHelper;
+  }
+
+  @Override
+  public void handle(@Nonnull RoutingContext routingContext) {
+    String sessionId = routingContext.pathParam("sessionId");
+    SessionRequest request = sessionRepository.getRequest(sessionId);
+    if (request == null) {
+      LOG.warn("Login for unknown session {} requested!", new UserInputSanitizer(sessionId));
+      routingContext.fail(404);
+      return;
+    }
+    String username = routingContext.request().getFormAttribute(USERNAME_PARAMETER);
+    if (username == null) {
+      LOG.warn("Missing username {}", new UserInputSanitizer(username));
+      routingContext.fail(400);
+      return;
+    }
+    String rolesString = routingContext.request().getFormAttribute(ROLES_PARAMETER);
+    List<String> roles =
+        Optional.ofNullable(rolesString)
+            .map(s -> Arrays.asList(s.split(",")))
+            .orElseGet(Collections::emptyList);
+
+    PersistentSession session = request.toSession(username, roles);
+    sessionRepository.upgradeRequest(request, session);
+
+    UrlConfiguration requestConfiguration = routingContext.get(CTX_REQUEST_CONFIGURATION);
+
+    routingContext
+        .response()
+        .addCookie(redirectHelper.getSessionCookie(session, requestConfiguration))
+        .putHeader("location", redirectHelper.getRedirectLocation(session, requestConfiguration))
+        .setStatusCode(302)
+        .end();
+  }
+}

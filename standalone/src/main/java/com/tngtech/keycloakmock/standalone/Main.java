@@ -1,14 +1,15 @@
 package com.tngtech.keycloakmock.standalone;
 
-import static com.tngtech.keycloakmock.api.ServerConfig.aServerConfig;
+import static io.github.mdanish98.keycloakmock.api.ServerConfig.aServerConfig;
 
-import com.tngtech.keycloakmock.api.KeycloakMock;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.Callable;
 import javax.annotation.Nonnull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import io.github.mdanish98.keycloakmock.api.KeycloakMock;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;

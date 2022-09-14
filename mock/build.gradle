@@ -51,8 +51,8 @@ test {
     }
 }
 
-task uberJar(type: Jar) {
-    archiveClassifier = 'uber'
+task keyCloakMockJar(type: Jar) {
+    archiveClassifier = 'keyCloakMock'
     
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 

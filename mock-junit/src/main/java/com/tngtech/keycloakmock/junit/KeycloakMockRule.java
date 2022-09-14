@@ -1,10 +1,11 @@
 package com.tngtech.keycloakmock.junit;
 
-import com.tngtech.keycloakmock.api.KeycloakMock;
-import com.tngtech.keycloakmock.api.ServerConfig;
-import com.tngtech.keycloakmock.api.TokenConfig;
 import javax.annotation.Nonnull;
 import org.junit.rules.ExternalResource;
+
+import io.github.mdanish98.keycloakmock.api.KeycloakMock;
+import io.github.mdanish98.keycloakmock.api.ServerConfig;
+import io.github.mdanish98.keycloakmock.api.TokenConfig;
 
 /**
  * A JUnit4 rule to automatically start and stop the keycloak mock.

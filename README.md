@@ -6,6 +6,7 @@
 
 # Keycloak Mock
 
+This project is adapted from [com.tngtech.keycloakmock](https://github.com/TNG/keycloak-mock).
 [Keycloak](https://www.keycloak.org) is a single sign-on solution that supports the
 [Open ID connect](https://openid.net/connect/) standard. However, it does not deliver any test
 support. This library is intended to fill that gap.
