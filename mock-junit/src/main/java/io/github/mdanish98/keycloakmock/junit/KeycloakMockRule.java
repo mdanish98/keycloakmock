@@ -1,4 +1,4 @@
-package com.tngtech.keycloakmock.junit;
+package io.github.mdanish98.keycloakmock.junit;
 
 import javax.annotation.Nonnull;
 import org.junit.rules.ExternalResource;

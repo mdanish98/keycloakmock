@@ -1,4 +1,4 @@
-package com.tngtech.keycloakmock.examplebackend.config;
+package io.github.mdanish98.keycloakmock.examplebackend.config;
 
 import org.keycloak.adapters.springsecurity.KeycloakConfiguration;
 import org.keycloak.adapters.springsecurity.config.KeycloakWebSecurityConfigurerAdapter;

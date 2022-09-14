@@ -1,10 +1,10 @@
-package com.tngtech.keycloakmock.examplebackend;
+package io.github.mdanish98.keycloakmock.examplebackend;
 
 import static io.github.mdanish98.keycloakmock.api.ServerConfig.aServerConfig;
 import static io.github.mdanish98.keycloakmock.api.TokenConfig.aTokenConfig;
 import static org.hamcrest.Matchers.equalTo;
 
-import com.tngtech.keycloakmock.junit5.KeycloakMockExtension;
+import io.github.mdanish98.keycloakmock.junit5.KeycloakMockExtension;
 import io.restassured.RestAssured;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

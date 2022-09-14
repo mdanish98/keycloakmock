@@ -1,5 +1,6 @@
-package com.tngtech.keycloakmock.junit5;
+package io.github.mdanish98.keycloakmock.junit5;
 
+import io.github.mdanish98.keycloakmock.junit5.KeycloakMockExtension;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 

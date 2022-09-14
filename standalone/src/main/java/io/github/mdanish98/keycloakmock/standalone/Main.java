@@ -1,4 +1,4 @@
-package com.tngtech.keycloakmock.standalone;
+package io.github.mdanish98.keycloakmock.standalone;
 
 import static io.github.mdanish98.keycloakmock.api.ServerConfig.aServerConfig;
 
@@ -16,8 +16,8 @@ import picocli.CommandLine.Option;
 
 @Command(
     description = "Starts a stand-alone keycloak mock.",
-    name = BuildConfig.NAME,
-    version = BuildConfig.VERSION,
+    name = "standalone",
+    version = "0.13.0-SNAPSHOT",
     mixinStandardHelpOptions = true)
 public class Main implements Callable<Void> {
   private static final Logger LOG = LoggerFactory.getLogger(Main.class);

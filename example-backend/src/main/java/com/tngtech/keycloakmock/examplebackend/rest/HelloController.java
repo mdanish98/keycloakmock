@@ -1,4 +1,4 @@
-package com.tngtech.keycloakmock.examplebackend.rest;
+package io.github.mdanish98.keycloakmock.examplebackend.rest;
 
 import java.security.Principal;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

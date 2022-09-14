@@ -1,4 +1,4 @@
-package com.tngtech.keycloakmock.examplebackend;
+package io.github.mdanish98.keycloakmock.examplebackend;
 
 import org.keycloak.adapters.springboot.KeycloakSpringBootConfigResolver;
 import org.springframework.boot.SpringApplication;

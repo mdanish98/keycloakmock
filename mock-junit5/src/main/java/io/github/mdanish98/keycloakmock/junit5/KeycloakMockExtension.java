@@ -1,4 +1,4 @@
-package com.tngtech.keycloakmock.junit5;
+package io.github.mdanish98.keycloakmock.junit5;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;

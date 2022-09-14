@@ -13,7 +13,7 @@ description = 'Standalone keycloak-mock server for use in frontend development'
 shadowJar {
     classifier null
     manifest {
-        attributes 'Main-Class': 'com.tngtech.keycloakmock.standalone.Main'
+        attributes 'Main-Class': 'io.github.mdanish98.keycloakmock.standalone.Main'
     }
     exclude 'META-INF/LICENSE.*'
     transform(ApacheNoticeResourceTransformer.class) {
@@ -64,7 +64,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.tngtech.keycloakmock.standalone.Main'
+    mainClass = 'io.github.mdanish98.keycloakmock.standalone.Main'
 }
 
 shadow {
@@ -96,6 +96,6 @@ jib {
     }
     container {
         ports = ['8000']
-        mainClass = 'com.tngtech.keycloakmock.standalone.Main'
+        mainClass = 'io.github.mdanish98.keycloakmock.standalone.Main'
     }
 }
