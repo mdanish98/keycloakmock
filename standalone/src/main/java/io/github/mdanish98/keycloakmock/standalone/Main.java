@@ -17,7 +17,7 @@ import picocli.CommandLine.Option;
 @Command(
     description = "Starts a stand-alone keycloak mock.",
     name = "standalone",
-    version = "0.13.0-SNAPSHOT",
+    version = "0.13.0",
     mixinStandardHelpOptions = true)
 public class Main implements Callable<Void> {
   private static final Logger LOG = LoggerFactory.getLogger(Main.class);

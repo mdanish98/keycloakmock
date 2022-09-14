@@ -117,6 +117,11 @@ subprojects {
                 }
             }
             repositories.maven {
+	            if (project.hasProperty('projVersion')) {
+				  project.version = project.projVersion
+				} else {
+				  project.version = '0.13.0'
+				}
                 if (project.version.endsWith('-SNAPSHOT')) {
                     credentials.username project.findProperty('ossrhUsername')
                     credentials.password project.findProperty('ossrhPassword')
